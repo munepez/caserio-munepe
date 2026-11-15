@@ -1,4 +1,5 @@
-# Caserío [MUNEPE] · Web de venta entre particulares
+
+ Caserío [MUNEPE] · Web de venta entre particulares
 
 Landing page estática (HTML + Tailwind CDN + JavaScript puro). No necesita backend ni compilación.
 
@@ -62,3 +63,7 @@ Entra en <https://app.netlify.com/drop> y arrastra la carpeta del proyecto.
 - Comprueba la vista previa de WhatsApp en <https://www.opengraph.xyz> (WhatsApp guarda en caché la vista previa; si cambias la foto, prueba a compartir la URL con `?v=2` al final).
 - Da de alta la web en [Google Search Console](https://search.google.com/search-console) y envía `sitemap.xml`.
 - Opcional: un dominio propio (≈10 €/año) da más confianza, p. ej. `caseriomunepe.com`.
+=======
+# caserio-munepe
+Página web del caserio Munepe para la venta
+
