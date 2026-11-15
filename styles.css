@@ -1,0 +1,187 @@
+/* ==========================================================================
+   ESTILOS PERSONALIZADOS · Caserío [MUNEPE]
+   Tailwind (CDN) hace casi todo el trabajo; aquí van los componentes
+   reutilizables y las animaciones. Colores en formato hex para que
+   funcionen sin depender de la compilación de Tailwind.
+
+   Paleta:
+     Hueso (blanco roto) #faf7f2 · Piedra #52463a / #ebe5db
+     Madera #a96f3a      · Bosque #2c3d2b / #3b5139
+   ========================================================================== */
+
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+body { -webkit-tap-highlight-color: transparent; }
+img { user-select: none; }
+
+/* ---------- Header: transparente sobre el hero, sólido al hacer scroll ---------- */
+#header .header-text { color: #fff; transition: color .3s; }
+#header.is-scrolled {
+  background: rgba(250, 247, 242, .94);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 1px 0 #ebe5db, 0 8px 24px -16px rgba(38, 33, 28, .35);
+}
+#header.is-scrolled .header-text { color: #2c3d2b; }
+#header.menu-open { background: rgba(250, 247, 242, .97); }
+#header.menu-open .header-text { color: #2c3d2b; }
+
+.nav-link { position: relative; padding: 4px 0; }
+.nav-link::after {
+  content: ""; position: absolute; left: 0; bottom: -2px;
+  width: 0; height: 2px; background: #c68b52; transition: width .3s;
+}
+.nav-link:hover::after { width: 100%; }
+
+/* ---------- Hero: zoom lento de la foto ---------- */
+.hero-zoom { animation: heroZoom 18s ease-out forwards; transform-origin: center; }
+@keyframes heroZoom { from { transform: scale(1.08); } to { transform: scale(1); } }
+
+/* ---------- Títulos de sección ---------- */
+.eyebrow {
+  font-size: .75rem; font-weight: 600; letter-spacing: .22em;
+  text-transform: uppercase; color: #a96f3a; margin-bottom: .75rem;
+}
+.section-title {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2.1rem, 4.5vw, 3.4rem); font-weight: 600;
+  line-height: 1.08; color: #2c3d2b;
+}
+.lead { font-size: 1.15rem; line-height: 1.8; color: #52463a; }
+
+/* ---------- Tarjetas de características ---------- */
+.feature-card {
+  background: #fff; border: 1px solid #ebe5db; border-radius: 1.5rem;
+  padding: 2rem; transition: transform .3s, box-shadow .3s;
+}
+.feature-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -24px rgba(44, 61, 43, .45); }
+.feature-icon {
+  display: grid; place-items: center; width: 3.25rem; height: 3.25rem;
+  border-radius: 1rem; background: #eef3ee; color: #3b5139; margin-bottom: 1.25rem;
+}
+.feature-icon svg { width: 1.6rem; height: 1.6rem; }
+.feature-label { font-size: .8rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #83725e; }
+.feature-value {
+  margin-top: .35rem; font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 2.4rem; font-weight: 700; line-height: 1.1; color: #2c3d2b;
+}
+
+/* ---------- Historia ---------- */
+.story-card {
+  background: #fff; border-radius: 1.5rem; padding: 2rem;
+  border: 1px solid #ebe5db; line-height: 1.8; color: #52463a;
+}
+@media (min-width: 640px) { .story-card { padding: 2.5rem; } }
+.story-card p + p { margin-top: 1rem; }
+.story-card strong { color: #2c3d2b; }
+.story-title {
+  font-family: "Cormorant Garamond", Georgia, serif; font-size: 1.9rem;
+  font-weight: 600; line-height: 1.15; color: #2c3d2b; margin-bottom: 1rem;
+}
+
+.zone-card {
+  position: relative; overflow: hidden; border-radius: 1.5rem; padding: 2rem;
+  background: linear-gradient(160deg, #3b5139 0%, #2c3d2b 100%);
+  color: #d8e3d6; line-height: 1.7;
+}
+.zone-card::after {   /* hoja decorativa */
+  content: ""; position: absolute; right: -30px; top: -30px; width: 120px; height: 120px;
+  border-radius: 0 100% 0 100%; background: rgba(255, 255, 255, .05);
+}
+.zone-area { font-family: "Cormorant Garamond", Georgia, serif; font-size: 2.4rem; font-weight: 700; color: #d9a877; }
+.zone-title { margin: .25rem 0 .6rem; font-size: 1.15rem; font-weight: 600; color: #fff; }
+
+/* ---------- Galería ---------- */
+.filter-btn {
+  border-radius: 9999px; border: 1px solid #d8cfc1; background: #fff;
+  padding: .6rem 1.2rem; font-size: .9rem; font-weight: 500; color: #52463a;
+  transition: all .2s;
+}
+.filter-btn:hover { border-color: #557553; color: #2c3d2b; }
+.filter-btn.is-active { background: #2c3d2b; border-color: #2c3d2b; color: #faf7f2; }
+
+#gallery-grid { grid-auto-rows: 160px; grid-auto-flow: dense; }
+@media (min-width: 640px) { #gallery-grid { grid-auto-rows: 220px; } }
+
+.gallery-item {
+  position: relative; overflow: hidden; border-radius: 1rem;
+  cursor: zoom-in; background: #ebe5db;
+  transition: opacity .35s, transform .35s;
+}
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+.gallery-item:hover img { transform: scale(1.06); }
+.gallery-item figcaption {
+  position: absolute; inset: auto 0 0 0; padding: 2rem 1rem .8rem;
+  background: linear-gradient(to top, rgba(31, 43, 30, .85), transparent);
+  color: #fff; font-size: .85rem; font-weight: 500;
+  opacity: 0; transform: translateY(8px); transition: all .3s;
+}
+.gallery-item:hover figcaption, .gallery-item:focus-visible figcaption { opacity: 1; transform: none; }
+@media (hover: none) { .gallery-item figcaption { opacity: 1; transform: none; } }
+.gallery-item.is-hidden { display: none; }
+.gallery-item:focus-visible { outline: 3px solid #c68b52; outline-offset: 3px; }
+
+/* Cuando hay filtro activo, todas las fotos tienen el mismo tamaño */
+#gallery-grid.is-filtered .gallery-item { grid-column: auto; grid-row: auto; }
+
+/* ---------- Lightbox ---------- */
+#lightbox.is-open { display: flex; animation: fadeIn .25s ease; }
+#lb-img { animation: zoomIn .3s ease; }
+.lb-btn {
+  position: absolute; display: grid; place-items: center;
+  width: 3rem; height: 3rem; border-radius: 9999px;
+  background: rgba(255, 255, 255, .12); color: #fff; transition: background .2s;
+}
+.lb-btn:hover { background: rgba(255, 255, 255, .25); }
+.lb-btn svg { width: 1.5rem; height: 1.5rem; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes zoomIn { from { opacity: 0; transform: scale(.96); } to { opacity: 1; transform: none; } }
+
+/* ---------- Ubicación ---------- */
+.distance-item {
+  display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+  padding: .9rem 0; color: #52463a;
+}
+.distance-item strong {
+  white-space: nowrap; border-radius: 9999px; background: #eef3ee;
+  padding: .25rem .8rem; font-size: .85rem; color: #3b5139;
+}
+
+/* ---------- Contacto ---------- */
+.texture {   /* textura sutil tipo piedra con gradientes, sin imágenes */
+  background-image:
+    radial-gradient(circle at 20% 30%, #fff 1px, transparent 1.5px),
+    radial-gradient(circle at 70% 80%, #fff 1px, transparent 1.5px);
+  background-size: 28px 28px, 36px 36px;
+}
+.contact-icon {
+  display: grid; place-items: center; width: 3rem; height: 3rem; flex-shrink: 0;
+  border-radius: 9999px; background: rgba(255, 255, 255, .1); color: #d9a877;
+}
+.contact-icon svg { width: 1.3rem; height: 1.3rem; }
+
+.form-label { display: block; margin-bottom: .4rem; font-size: .85rem; font-weight: 600; color: #3b332b; }
+.form-input {
+  width: 100%; border-radius: .9rem; border: 1px solid #d8cfc1; background: #fff;
+  padding: .85rem 1rem; color: #26211c; transition: border-color .2s, box-shadow .2s;
+}
+.form-input::placeholder { color: #9d8c76; }
+.form-input:focus { outline: none; border-color: #557553; box-shadow: 0 0 0 4px rgba(85, 117, 83, .18); }
+.form-input.is-invalid { border-color: #b4462f; box-shadow: 0 0 0 4px rgba(180, 70, 47, .12); }
+
+/* ---------- WhatsApp flotante ---------- */
+.whatsapp-pulse {
+  position: absolute; inset: 0; border-radius: 9999px; background: #25D366;
+  z-index: -1; animation: pulse 2.4s ease-out infinite;
+}
+@keyframes pulse { 0% { transform: scale(1); opacity: .6; } 100% { transform: scale(1.7); opacity: 0; } }
+
+/* ---------- Aparición al hacer scroll ---------- */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s ease; }
+.reveal.is-visible { opacity: 1; transform: none; }
+
+/* ---------- Accesibilidad: menos movimiento si el usuario lo pide ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .reveal { opacity: 1; transform: none; }
+}

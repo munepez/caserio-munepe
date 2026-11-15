@@ -1,0 +1,20 @@
+CARPETA DE FOTOS
+================
+Copia aquí tus fotos con EXACTAMENTE estos nombres (en minúsculas, .jpg).
+Mientras una foto no exista, la web muestra una foto provisional de Unsplash.
+
+  hero.jpg          Foto principal a pantalla completa (horizontal, 1920-2400 px de ancho)
+  og-image.jpg      Foto que aparece al compartir por WhatsApp (1200 x 630 px, menos de 300 KB)
+  historia.jpg      Foto junto al texto de introducción (horizontal 4:3)
+  vistas.jpg        Foto del bloque "Vistas privilegiadas"
+
+  Galería · Exterior y Terreno:  exterior-01.jpg ... exterior-06.jpg  (exterior-01 sale en grande)
+  Galería · Interior:            interior-01.jpg ... interior-03.jpg
+  Galería · Estructura/Detalles: detalle-01.jpg  ... detalle-03.jpg
+
+CONSEJOS
+- Reduce el peso antes de subirlas (https://squoosh.app): 1600-2000 px de ancho y calidad 75-80
+  suele dar fotos de 200-400 KB, que cargan rápido en el móvil.
+- Para añadir más fotos a la galería, copia un bloque <figure> en index.html
+  y cambia src, alt y data-category (exterior | interior | detalles).
+- Cuando tengas todas tus fotos puedes borrar los atributos data-fallback.
